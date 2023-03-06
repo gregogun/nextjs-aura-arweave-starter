@@ -17,6 +17,7 @@
     "clean-build": "rm -rf out*"
   },
   "dependencies": {
+    "@aura-ui/react": "^0.0.4",
     "@next/font": "13.1.6",
     "arconnect": "0.4.2",
     "arweave": "1.12.4",
@@ -24,6 +25,7 @@
     "arweave-graphql": "0.0.5",
     "arweave-wallet-connector": "0.0.31",
     "next": "13.1.6",
+    "next-themes": "^0.2.1",
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "warp-contracts": "1.2.52"

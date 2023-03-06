@@ -1,5 +1,78 @@
 import Head from "next/head";
 import styles from "@/styles/Home.module.css";
+import {
+  Box,
+  Center,
+  Container,
+  Flex,
+  styled,
+  Typography,
+} from "@aura-ui/react";
+
+const Main = styled("main", {
+  display: "flex",
+  alignItems: "center",
+  flexDirection: "column",
+  justifyContent: "center",
+  width: "100%",
+  height: "100%",
+});
+
+const links: { name: string; desc: string; url: string }[] = [
+  {
+    name: "Wiki",
+    desc: "Find in-depth information about the Arweave protocol.",
+    url: "https://arwiki.wiki/",
+  },
+  {
+    name: "Cookbook",
+    desc: "Learn how to go from 0-1 with building Permaweb apps.",
+    url: "https://cookbook.arweave.dev/",
+  },
+  {
+    name: "Get a Wallet",
+    desc: "Get an Arweave wallet to start uploading data to the Permaweb.",
+    url: "https://www.arconnect.io/",
+  },
+  {
+    name: "VouchDao",
+    desc: "Vouch for your identity on the Permaweb!",
+    url: "https://vouchdao.xyz/",
+  },
+];
+
+const LinkCard = ({
+  name,
+  url,
+  desc,
+}: {
+  name: string;
+  url: string;
+  desc: string;
+}) => (
+  <Container
+    css={{
+      maxW: "30ch",
+      br: "$3",
+      boxShadow: "0 0 0 1px $colors$slate6",
+      p: "$5",
+
+      "&:hover": {
+        backgroundColor: "$slate2",
+        boxShadow: "0 0 0 1px $colors$slate7",
+      },
+    }}
+    as="a"
+    href={url}
+    target="_blank"
+    rel="noopener noreferrer"
+  >
+    <Typography contrast="hiContrast" size="4" weight="6">
+      {name} <span>-&gt;</span>
+    </Typography>
+    <Typography>{desc}</Typography>
+  </Container>
+);
 
 export default function Home() {
   return (
@@ -10,10 +83,19 @@ export default function Home() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="favicon.ico" />
       </Head>
-      <main className={styles.main}>
-        <div className={styles.description}>
-          <p>Stored permanently on Arweave ✨</p>
-        </div>
+      <Main>
+        <Center
+          css={{
+            width: "max-content",
+            p: "$5",
+            br: "$2",
+            boxShadow: "0 0 0 1px $colors$slate6",
+          }}
+        >
+          <Typography>
+            Stored permanently on Arweave styled with Aura UI ✨
+          </Typography>
+        </Center>
 
         <div className={styles.center}>
           <div className={styles.thirteen}>
@@ -21,58 +103,23 @@ export default function Home() {
           </div>
         </div>
 
-        <div className={styles.grid}>
-          <a
-            href="https://arwiki.wiki/"
-            className={styles.card}
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <h2>
-              Wiki <span>-&gt;</span>
-            </h2>
-            <p>Find in-depth information about the Arweave protocol.</p>
-          </a>
-
-          <a
-            href="https://cookbook.arweave.dev/"
-            className={styles.card}
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <h2>
-              Cookbook <span>-&gt;</span>
-            </h2>
-            <p>Learn how to go from 0-1 with building Permaweb apps.</p>
-          </a>
-
-          <a
-            href="https://www.vouchdao.xyz/"
-            className={styles.card}
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <h2>
-              VouchDao <span>-&gt;</span>
-            </h2>
-            <p>Vouch for your identity on the Permaweb!</p>
-          </a>
-
-          <a
-            href="https://www.arconnect.io/"
-            className={styles.card}
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <h2>
-              Get a Wallet <span>-&gt;</span>
-            </h2>
-            <p>
-              Get an Arweave wallet to start uploading data to the Permaweb.
-            </p>
-          </a>
-        </div>
-      </main>
+        <Flex
+          direction={{
+            "@initial": "column",
+            "@bp3": "row",
+          }}
+          gap="10"
+        >
+          {links.map((link) => (
+            <LinkCard
+              key={link.name}
+              name={link.name}
+              desc={link.desc}
+              url={link.url}
+            />
+          ))}
+        </Flex>
+      </Main>
     </>
   );
 }

@@ -1,13 +1,8 @@
 import Head from "next/head";
 import styles from "@/styles/Home.module.css";
-import {
-  Box,
-  Center,
-  Container,
-  Flex,
-  styled,
-  Typography,
-} from "@aura-ui/react";
+import { Center, Container, Flex, styled, Typography } from "@aura-ui/react";
+import { ConnectWallet } from "arweave-wallet-ui-test";
+import { account } from "@/lib/arweave";
 
 const Main = styled("main", {
   display: "flex",
@@ -52,7 +47,7 @@ const LinkCard = ({
 }) => (
   <Container
     css={{
-      maxW: "30ch",
+      maxW: "24ch",
       br: "$3",
       boxShadow: "0 0 0 1px $colors$slate6",
       p: "$5",
@@ -83,6 +78,16 @@ export default function Home() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="favicon.ico" />
       </Head>
+      <Flex
+        css={{
+          p: "$10",
+        }}
+      >
+        <ConnectWallet
+          permissions={["ACCESS_ADDRESS", "ACCESS_ALL_ADDRESSES", "DISPATCH"]}
+          arweaveAccount={account}
+        />
+      </Flex>
       <Main>
         <Center
           css={{

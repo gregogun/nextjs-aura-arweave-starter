@@ -2,7 +2,6 @@ import Head from "next/head";
 import styles from "@/styles/Home.module.css";
 import { Center, Container, Flex, styled, Typography } from "@aura-ui/react";
 import { ConnectWallet } from "arweave-wallet-ui-test";
-import { account } from "@/lib/arweave";
 
 const Main = styled("main", {
   display: "flex",
@@ -85,7 +84,6 @@ export default function Home() {
       >
         <ConnectWallet
           permissions={["ACCESS_ADDRESS", "ACCESS_ALL_ADDRESSES", "DISPATCH"]}
-          arweaveAccount={account}
         />
       </Flex>
       <Main>

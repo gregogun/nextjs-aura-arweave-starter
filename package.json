@@ -19,16 +19,14 @@
   "dependencies": {
     "@aura-ui/react": "0.0.5-alpha.2",
     "@next/font": "13.1.6",
-    "arconnect": "0.4.2",
-    "arweave": "1.12.4",
-    "arweave-account": "1.3.4",
+    "arweave": "1.13.7",
     "arweave-graphql": "0.0.5",
-    "arweave-wallet-ui-test": "0.0.9",
+    "arweave-wallet-ui-test": "0.0.12",
     "next": "13.1.6",
-    "next-themes": "^0.2.1",
+    "next-themes": "0.2.1",
     "react": "18.2.0",
     "react-dom": "18.2.0",
-    "warp-contracts": "1.2.52"
+    "warp-contracts": "1.4.8"
   },
   "devDependencies": {
     "@types/node": "18.11.18",
